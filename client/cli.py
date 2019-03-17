@@ -10,21 +10,16 @@ SOURCE_URL = urljoin(SOURCES, '?apiKey={}'.format(API_KEY))
 
 sources = requests.get(SOURCE_URL)
 if sources.ok:
-    source_list = [source['name'] for source in sources.json()['sources']]
+    sources_list = [source['name'] for source in sources.json()['sources']]
     full_sources_list = {
         source['name']: source['id'] for source in sources.json()['sources']
     }
 
-    rand_list = sample(source_list, 4)
+print(sample(sources_list, 4))
 
 
 @click.command()
-@click.argument('choice',
-                type=click.Choice(
-                    rand_list,
-                    case_sensitive=True),
-                prompt="Enter a news choice"
-                )
+@click.argument('choice', type=str, required=True)
 def get_news_items(choice):
     """
     This is a script that takes in a choice from you
