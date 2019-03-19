@@ -8,6 +8,9 @@ from .settings import API_KEY, SOURCES, TOP_HEAD
 
 SOURCE_URL = urljoin(SOURCES, '?apiKey={}'.format(API_KEY))
 
+# TODO: Try a deliberate failure to see how the remote API responds
+# so that your code knows how to catch those exceptions properly,
+
 sources = requests.get(SOURCE_URL)
 if sources.ok:
     source_list = [source['name'] for source in sources.json()['sources']]
