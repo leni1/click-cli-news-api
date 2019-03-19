@@ -26,7 +26,7 @@ setup(
     },
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
-    install_requires=["Click", ],
+    install_requires=["Click", "requests", "python-dotenv", ],
     python_requires=">=3",
     entry_points={
         "console_scripts": [
@@ -34,4 +34,3 @@ setup(
         ]
     },
 )
-
